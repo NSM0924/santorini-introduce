@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santorini</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Song Myung', serif;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            height: 100px;
+            background-color: #0281ec;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0px 1px 20px 0px skyblue;
+            transition: .3s;
+        }
+
+        header.active {
+            background-color: #fe8c00;
+            box-shadow: 0px 1px 20px 0px #fe8c00;
+        }
+
+        .title {
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+            color: rgb(255, 255, 255);
+            text-shadow: 3px 3px 0px #3a4248;
+        }
+
+        .title p {
+            font-size: 18px;
+            color: white;
+        }
+
+        section {
+            height: calc(100vh - 120px);
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box1 {
+            width: 45%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .box1 p {
+            margin: 0 auto;
+            font-size: 25px;
+        }
+
+        .box2 {
+            border: 5px #54b1ff double;
+            width: 45%;
+            transition: .3s;
+        }
+
+        hr {
+            margin: 20px 0;
+        }
+
+        .imgBox {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            flex: 1;
+        }
+
+        .imgStyle {
+            width: 30%;
+            height: 64%;
+            border: 10px #54b1ff ridge;
+            transition: .3s;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box2.active,
+        .imgStyle.active {
+            border-color: #fe8c00;
+        }
+
+        #img1 {
+            background-image: url(./img1.jpg);
+        }
+        #img2 {
+            background-image: url(./img2.jpg);
+        }
+        #img3 {
+            background-image: url(./img3.jpg);
+        }
+
+        #img1.active {
+            background-image: url(./sunset1.jpg);
+        }
+        #img2.active {
+            background-image: url(./sunset2.jpg);
+        }
+        #img3.active {
+            background-image: url(./sunset3.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="title" onclick="sunset()">
+            <h1>Santorini</h1>
+            <p>산토리니</p>
+        </div>
+    </header>
+    <section>
+        <div class="info">
+            <div class="box1">
+                <p id="text">"지상 어디에도 없는 특별한 아름다움을 간직한곳"
+                    <br>
+                    <br>
+                    <span style="font-size: 30px; color: #0281ec;">파란색</span>은 하늘과 바다, <br>
+                    <span
+                        style="text-shadow: -1px 0 #000, 0 2px #000, 1px 0 #000, 0 -1px #000; color: white; font-size: 30px;">하얀색</span>
+                    은 투쟁 정신을 상징한다.
+                </p>
+            </div>
+            <div class="box2" id="map"><iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102754.54445316653!2d25.35041908074444!3d36.40727146123277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1499ce86adfd9ff7%3A0xb2a761f740d68afc!2z7IKw7Yag66as64uIIOyErA!5e0!3m2!1sko!2skr!4v1618401252880!5m2!1sko!2skr"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        </div>
+        <hr>
+        <div class="imgBox">
+            <div class="imgStyle" id="img1"></div>
+            <div class="imgStyle" id="img2"></div>
+            <div class="imgStyle" id="img3"></div>
+        </div>
+    </section>
+
+    <script>
+        function sunset() {
+            let header = document.getElementsByTagName("header")[0];
+            let box2 = document.getElementById("map");
+            let img1 = document.getElementById("img1");
+            let img2 = document.getElementById("img2");
+            let img3 = document.getElementById("img3");
+            let text = document.getElementById("text");
+
+            header.classList.toggle("active");
+            box2.classList.toggle("active");
+            img1.classList.toggle("active");
+            img2.classList.toggle("active");
+            img3.classList.toggle("active");
+            text.classList.toggle("active");
+
+            text.classList.contains("active")
+            ? text.innerHTML = `"세계 3대 석양 명소"<br><br> 아름답다는 표현 이상으로 설명하기 조차 어려운 <span style="font-size: 30px; color: #fe8c00;">일몰</span>`
+            : text.innerHTML = `"지상 어디에도 없는 특별한 아름다움을 간직한곳"<br><br>
+                <span style="font-size: 30px; color: #0281ec;">파란색</span>은 하늘과 바다, <br>
+                <span style="text-shadow: -1px 0 #000, 0 2px #000, 1px 0 #000, 0 -1px #000; color: white; font-size: 30px;">하얀색</span> 은 투쟁 정신을 상징한다.`
+        }
+    </script>
+</body>
+
+</html>
